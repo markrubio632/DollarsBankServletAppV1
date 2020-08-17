@@ -8,7 +8,7 @@
 </head>
 <body>
 
-Welcome ${userName}! redirecting to your account...
+Welcome ${userName}!<a href="/findId">Click here</a> to go to your account.
 
 </body>
 </html>

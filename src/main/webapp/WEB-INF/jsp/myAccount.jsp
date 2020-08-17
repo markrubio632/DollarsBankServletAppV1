@@ -24,13 +24,16 @@
 					<th>Balance</th>
 					<th>Account Name</th>
 				</tr>
-				<c:forEach var="user" items="${listOfUsers}">
-					<tr>
-						<td><c:out value="${user.id}" /></td>
-						<td><c:out value="${user.name}" /></td>
-						<td><c:out value="${user.password}" /></td>
-					</tr>
-				</c:forEach>
+				<c:forEach var="user" items="${uList}">
+				<tr>
+					<td><c:out value="${user.id}"/></td>
+					<td><c:out value="${user.userName}"/></td>
+					<td><c:out value="${user.userPass}"/></td>
+					<td><c:out value="${user.userAddress}"/></td>
+					<td><c:out value="${user.userContact}"/></td>
+					<td><c:out value="${user.userBalance}"/></td>
+					<td><c:out value="${user.userAcc}"/></td>
+				</tr></c:forEach>
 			</table>
 		</div>
 

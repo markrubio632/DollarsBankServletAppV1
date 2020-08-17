@@ -8,10 +8,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.model.User;
+import com.repository.CRUDRepo;
 
+@Component
 public class DaoImpl implements Dao {
+
+	@Autowired
+	CRUDRepo repo;
 
 	Connection conn;
 	PreparedStatement stmt;
@@ -44,13 +50,17 @@ public class DaoImpl implements Dao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		uList.add(user);
 		return 0;
 	}
 
 	@Override
 	public List<User> findAllUsers() {
+		
+		List<User> uList = (List<User>) repo.findAll();
+		return uList;
 
-		try {
+		/*try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(FIND_ALL_USERS);
 			rs = stmt.executeQuery();
@@ -64,7 +74,7 @@ public class DaoImpl implements Dao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return uList;
+		return uList;*/
 	}
 
 	@Override
@@ -80,16 +90,16 @@ public class DaoImpl implements Dao {
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				
-				//may need to assign these to user
 
-				rs.getInt(1);
-				rs.getString(2);
-				rs.getString(3);
-				rs.getString(4);
-				rs.getString(5);
-				rs.getDouble(6);
-				rs.getString(7);
+				user = new User(rs.getInt("id"), rs.getString("userName"), rs.getString("userPass"),
+						rs.getString("userAddress"), rs.getString("userContact"), rs.getDouble("userbalance"),
+						rs.getString("userAcc"));
+				uList.add(user);
+
+				/*
+				 * rs.getInt(1); rs.getString(2); rs.getString(3); rs.getString(4);
+				 * rs.getString(5); rs.getDouble(6); rs.getString(7);
+				 */
 			}
 
 		} catch (Exception e) {

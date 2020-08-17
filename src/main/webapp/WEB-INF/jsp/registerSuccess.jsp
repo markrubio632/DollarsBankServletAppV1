@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body><p>It worked i think</p>
+<body><p>Welcome ${userName}!<a href="/myAccount">Click here</a> to go to your account.</p>
 
 </body>
 </html>
