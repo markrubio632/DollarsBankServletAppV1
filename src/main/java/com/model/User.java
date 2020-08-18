@@ -66,6 +66,9 @@ public class User {
 		this.userAcc = userAcc;
 	}
 	
+	public int getId() {
+		return id;
+	}
 	public User(int id, String userName, String userPass, String userAddress, String userContact, double userBalance,
 			String userAcc) {
 		super();

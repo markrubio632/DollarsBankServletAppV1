@@ -28,7 +28,7 @@ public class BankService {
 		
 		Timestamp timestamp = new Timestamp(DateFormat.FULL);
 		
-		return "You had a recent " + text + " of " + numbers + " at " + timestamp;
+		return "You had a recent " + text + " of " + numbers + " at " + sdf.format(timestamp);
 	}
 
 }
