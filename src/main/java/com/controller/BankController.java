@@ -38,26 +38,50 @@ public class BankController {
 
 	// used to deposit an amount
 	@GetMapping("/deposit")
-	public String userDepot(ModelMap model, double amount, @RequestParam Double userBalance) {
+	public String userDepot(ModelMap model) {
 
-		userBalance += bank.deposit(amount);
-		history.add(bank.addHistory("deposit", amount));
-
-		// probably should go to myAccount
+		//should display the deposit page
 		return "deposit";
 
+	}
+	
+	@PostMapping("/deposit")
+	public String deposSuccess(ModelMap model, double amount, @RequestParam double userBalance) {
+		userBalance += bank.deposit(amount);
+		history.add(bank.addHistory("deposit", amount));
+		System.out.println("in deposit history: " + history.toString());
+		return "deposit";
 	}
 
 	// used to withdraw an amount
 	@GetMapping("/withdraw")
-	public String userWithdraw(ModelMap model, double amount, @RequestParam Double userBalance) {
+	public String userWithdraw(ModelMap model) {
 
-		userBalance -= bank.withdraw(amount);
-		history.add(bank.addHistory("withdraw", amount));
-
-		// probably should go to myAccount
+		//should bring up the withdraw page
 		return "withdraw";
 
+	}
+	
+	@PostMapping("/withdraw")
+	public String WithdrawSuccess(ModelMap model, double amount, @RequestParam Double userBalance) {
+		userBalance -= bank.withdraw(amount);
+		history.add(bank.addHistory("withdraw", amount));
+		System.out.println("in withdraw history: " + history.toString());
+		// probably should go to myAccount
+		return "withdraw";
+	}
+	
+	@GetMapping("/history")
+	public String showHistory(ModelMap model) {
+		//for now a console command - make a jsp for the results to be shown
+		
+		//loop to iterate through each record in the list
+		for(String item : history) {
+			model.put("item", item);
+			System.out.println("inside history loop: " + item);
+		}
+		
+		return "history";
 	}
 
 }

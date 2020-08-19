@@ -36,10 +36,10 @@
 			</table>
 		</div>
 		<div class="container" align="center">
-			<form:button>Deposit Funds</form:button>
-			<form:button>Withdraw Funds</form:button>
-			<form:button>Transfer Funds</form:button>
-			<form:button>Transaction History</form:button>
+			<form:button href="/deposit">Deposit Funds</form:button>
+			<form:button href="/withdraw">Withdraw Funds</form:button>
+			<form:button href="/fundTransfer">Transfer Funds</form:button>
+			<form:button href="/history">Transaction History</form:button>
 		
 		</div>
 

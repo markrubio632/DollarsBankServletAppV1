@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome Page</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-Welcome ${user.userName}!<a href="/myAccount"> Click here</a> to go to your account.
 
 </body>
 </html>

@@ -16,11 +16,25 @@ public class BankService {
 	private double balance;
 	
 	public double deposit(double amount) {
+		
+		//addHistory("deposit", amount);
+		
 		return balance += amount;
 	}
 	
 	public double withdraw(double amount) {
+		
+		//addHistory("withdraw", amount);
+		
 		return balance -= amount;
+	}
+	
+	public double fundTransfer(double amount, int receiverId) {
+		
+		balance -= amount;
+		
+		return amount;
+		
 	}
 	
 	//(text, numbers)
