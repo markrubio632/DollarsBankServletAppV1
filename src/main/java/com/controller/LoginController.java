@@ -29,6 +29,8 @@ public class LoginController {
 
 	@Autowired
 	CRUDRepo repo;
+	
+	private int choice;
 
 	@GetMapping("/register")
 	public String showRegister(ModelMap model) {
@@ -97,5 +99,5 @@ public class LoginController {
 
 		return "myAccount";
 	}
-
+	
 }

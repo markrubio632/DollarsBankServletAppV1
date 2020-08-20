@@ -28,6 +28,8 @@ public class DaoImpl implements Dao {
 	private static final String FIND_USER_BY_ID = "select * from DOLLARSBANK where id=?";
 
 	private static final String FIND_ALL_USERS = "select * from DOLLARSBANK";
+	
+	private static final String UPDATE_USER = "UPDATE dollarsbank SET userBalance = ? WHERE Id = ?";
 
 	List<User> uList = new ArrayList<User>();
 
@@ -121,6 +123,29 @@ public class DaoImpl implements Dao {
 
 		}
 		return conn;
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		
+		repo.delete(user);
+	}
+	
+	public int updateUser(User user) {
+		
+		try {
+			conn = getConnection();
+			stmt = conn.prepareStatement(UPDATE_USER);
+
+			stmt.setDouble(1, user.getUserBalance());
+			stmt.setInt(2, user.getId());
+
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

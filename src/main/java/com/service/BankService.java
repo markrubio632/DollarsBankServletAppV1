@@ -10,38 +10,40 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BankService {
-	
+
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 	
-	private double balance;
-	
+	private double balance = 0;
+
 	public double deposit(double amount) {
-		
-		//addHistory("deposit", amount);
+
+		// addHistory("deposit", amount);
 		
 		return balance += amount;
 	}
-	
+
 	public double withdraw(double amount) {
-		
-		//addHistory("withdraw", amount);
-		
+
+		// addHistory("withdraw", amount);
+
 		return balance -= amount;
 	}
-	
-	public double fundTransfer(double amount, int receiverId) {
-		
-		balance -= amount;
-		
-		return amount;
-		
-	}
-	
-	//(text, numbers)
+
+	/*
+	 * public double fundTransfer(double amount, int receiverId) {
+	 * 
+	 * balance -= amount;
+	 * 
+	 * return amount;
+	 * 
+	 * }
+	 */
+
+	// (text, numbers)
 	public String addHistory(String text, double numbers) {
-		
+
 		Timestamp timestamp = new Timestamp(DateFormat.FULL);
-		
+
 		return "You had a recent " + text + " of " + numbers + " at " + sdf.format(timestamp);
 	}
 

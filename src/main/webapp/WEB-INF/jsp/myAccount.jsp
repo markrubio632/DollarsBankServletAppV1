@@ -35,13 +35,12 @@
 				</tr>
 			</table>
 		</div>
-		<div class="container" align="center">
-			<form:button href="/deposit">Deposit Funds</form:button>
+			
+			<%-- <form:button href="/deposit">Deposit Funds</form:button>
 			<form:button href="/withdraw">Withdraw Funds</form:button>
 			<form:button href="/fundTransfer">Transfer Funds</form:button>
-			<form:button href="/history">Transaction History</form:button>
+			<form:button href="/history">Transaction History</form:button> --%>
 		
-		</div>
 
 	</form:form>
 

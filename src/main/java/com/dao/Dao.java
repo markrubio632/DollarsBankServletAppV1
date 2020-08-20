@@ -11,5 +11,9 @@ public interface Dao{
 	public List<User> findAllUsers();
 	
 	public User findUserById(int id);
+	
+	public void deleteUser(User user);
+	
+	public int updateUser(User user);
 
 }

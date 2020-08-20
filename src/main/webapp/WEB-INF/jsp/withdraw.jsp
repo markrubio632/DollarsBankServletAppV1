@@ -13,26 +13,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form method="post" modelAttribute="user">
-		<div class="container" align="center">
-
-			<!-- may need to be ${user.userBalance} - check the name of what is put in model -->
-			Your current balance is: ${userBalance}<br> 
-			Please Enter an Amount to Withdraw:
-			<fmt:formatNumber value="amount" type="currency" />
-			<%-- <form:input path="amount" placeholder="amount" name="amount" /> --%>
-
-			<!-- I believe this will make it so that the 
-			amount cannot be empty to display the submit button -->
-			<c:choose>
-				<c:when test="${empty amount}">
-				Please enter an amount.
-				</c:when>
-				<c:otherwise>
-					<form:button type="submit">Withdraw</form:button>
-				</c:otherwise>
-			</c:choose>
-		</div>
+	<form:form method="post">
+		
+		<table border="1">
+  			<tr>
+    			<td>Amount:</td>
+   				<td>
+      				<input type = "number" name = "amount" size = "30" step='0.01' value='0.00' placeholder='0.00' required>
+    			</td>
+  			</tr>
+  			<tr>
+    			<td>Current Balance:</td>
+   				<td>
+      				<td>${user.userBalance}</td>
+    			</td>
+  			</tr>
+	</table>
+	<p><input type = "submit" value = "submit"></p>
+		
 	</form:form>
 
 </body>
