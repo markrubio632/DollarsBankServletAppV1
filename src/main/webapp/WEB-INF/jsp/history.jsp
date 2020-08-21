@@ -9,21 +9,25 @@
 <title>DOLLARSBANK Transaction History</title>
 </head>
 <body>
-	<form:form method="post" modelAttribute="user">
+	<form:form>
 		<div align="center">
+		
 			<table border="1">
 				<caption>
 					<h2>My Transactions</h2>
 				</caption>
-				<!-- <tr>
+				<tr>
 					<th>Transaction</th>
-				</tr> -->
+				</tr>
+				<!-- separated each insert point into the history list as 1 item -->
+				<!-- so when we choose to print an item, it prints 1 single transaction -->
 				<c:forEach var="item" items="${history}">
 				<tr>
-					<td><c:out value="${item.item}"/></td>
+					<td><c:out value="${item}"/></td>
 				</tr>
 				</c:forEach>
 			</table>
+			
 		</div>
 
 	</form:form>

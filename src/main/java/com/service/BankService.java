@@ -12,32 +12,29 @@ import org.springframework.stereotype.Service;
 public class BankService {
 
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-	
-	private double balance = 0;
 
-	public double deposit(double amount) {
+	public double deposit(double balance, double amount) {
 
 		// addHistory("deposit", amount);
-		
-		return balance += amount;
+		balance = balance + amount;
+		return balance;
 	}
 
-	public double withdraw(double amount) {
+	public double withdraw(double balance, double amount) {
 
 		// addHistory("withdraw", amount);
 
-		return balance -= amount;
+		balance = balance - amount;
+		return balance;
 	}
 
-	/*
-	 * public double fundTransfer(double amount, int receiverId) {
-	 * 
-	 * balance -= amount;
-	 * 
-	 * return amount;
-	 * 
-	 * }
-	 */
+	public double fundTransfer(double balance, double amount, String loggedName, int receiverId) {
+
+		balance = balance - amount;
+
+		return balance;
+
+	}
 
 	// (text, numbers)
 	public String addHistory(String text, double numbers) {

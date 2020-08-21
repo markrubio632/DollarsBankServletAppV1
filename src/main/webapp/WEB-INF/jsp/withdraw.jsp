@@ -19,7 +19,7 @@
   			<tr>
     			<td>Amount:</td>
    				<td>
-      				<input type = "number" name = "amount" size = "30" step='0.01' value='0.00' placeholder='0.00' required>
+      				<input type = "number" name = "amount1" size = "30" step='0.01' value='0.00' placeholder='0.00' required>
     			</td>
   			</tr>
   			<tr>

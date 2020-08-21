@@ -58,21 +58,18 @@ public class BankController {
 		// i.e being able to change the balance in the model
 		User user = (User) model.getAttribute("user");
 
-		System.out.println("user called, userBalance should be 0 and is: " + userBalance);
 		userBalance = user.getUserBalance();
-		System.out.println("user.getuserbalance is called and new userBalance is: " + userBalance);
 
-		userBalance += bank.deposit(amount);
-		System.out.println("userbalance post deposit is: " + userBalance);
+		userBalance = bank.deposit(userBalance, amount);
+		// this updates the user balance in the model/user
 		user.setUserBalance(userBalance);
-		System.out.println("userbalance set is: " + userBalance);
 
 		// update userbalance to the DB
 		daoimpl.updateUser(user);
 
 		history.add(bank.addHistory("deposit", amount));
 		System.out.println("in deposit history: " + history.toString());
-		return "mainPage";
+		return "redirect:/mainPage";
 	}
 
 	// used to withdraw an amount
@@ -84,39 +81,54 @@ public class BankController {
 
 	}
 
-	//MUST FIND WAY TO CLEAR THE AMOUNT USED
+	// MUST FIND WAY TO CLEAR THE AMOUNT USED
 	@PostMapping("/withdraw")
-	public String WithdrawSuccess(ModelMap model, double amount) {
+	public String WithdrawSuccess(ModelMap model, double amount1) {
 		// creates a user instance from the previous user
 		// this allows us to manipulate the model and the things inside
 		// i.e being able to change the balance in the model
 		User user = (User) model.getAttribute("user");
-
-		//AMOUNT IS STILL AN ISSUE TO WORK ON
 		userBalance = user.getUserBalance();
 
-		System.out.println(userBalance);
-		userBalance -= bank.withdraw(amount);
+		userBalance = bank.withdraw(userBalance, amount1);
 		user.setUserBalance(userBalance);
-		
+
 		// update userbalance to the DB
 		daoimpl.updateUser(user);
 
-		history.add(bank.addHistory("withdraw", amount));
+		history.add(bank.addHistory("withdraw", amount1));
 		System.out.println("in withdraw history: " + history.toString());
+		return "redirect:/mainPage";
+	}
+	
+	@GetMapping("/fundTransfer")
+	public String showTransfer(ModelMap model) {
+		return "fundTransfer";
+	}
+	
+	//name param will be used for naming what user to give to (id used for identifying)
+	@PostMapping("/fundTransfer")
+	public String transferSuccess(ModelMap model, String name, int receiverId) {
+		
+		//this establishes the loggedin user by pulling from model
+		User loggedUser = (User) model.getAttribute("user");
+		
+		//this creates our receiver as an object so we can work with it
+		User receivingUser = daoimpl.findUserById(receiverId);
+		
+		
+		
 		return "mainPage";
 	}
 
 	@GetMapping("/history")
 	public String showHistory(ModelMap model) {
-		// for now a console command - make a jsp for the results to be shown
 
-		// loop to iterate through each record in the list
-		for (String item : history) {
-			//places the item in model, but doesnt show to the user
-			model.put("item", item);
-			System.out.println("inside history loop: " + item);
-		}
+		System.out.println("master history list: " + history.toString());
+
+		// appends the entire history (which has several items over-time)
+		// to the model for JSP access
+		model.put("history", history);
 
 		return "history";
 	}
