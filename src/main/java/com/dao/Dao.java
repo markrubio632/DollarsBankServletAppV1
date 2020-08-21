@@ -14,6 +14,7 @@ public interface Dao{
 	
 	public void deleteUser(User user);
 	
-	public int updateUser(User user);
+	//only set to update balance, but can be improved for the whole user
+	public int updateBalance(User user);
 
 }

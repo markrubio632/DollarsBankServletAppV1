@@ -9,6 +9,11 @@
 <title>DOLLARSBANK My Account</title>
 </head>
 <body>
+	<header>
+		<div align="left">
+			<a href="/login">Login Out</a>
+		</div>
+	</header>
 	<form:form method="post" modelAttribute="user">
 		<div align="center">
 			<table border="1">
@@ -25,22 +30,17 @@
 					<th>Account Name</th>
 				</tr>
 				<tr>
-					<td><c:out value="${user.id}"/></td>
-					<td><c:out value="${user.userName}"/></td>
-					<td><c:out value="${user.userPass}"/></td>
-					<td><c:out value="${user.userAddress}"/></td>
-					<td><c:out value="${user.userContact}"/></td>
-					<td><c:out value="${user.userBalance}"/></td>
-					<td><c:out value="${user.userAcc}"/></td>
+					<td><c:out value="${user.id}" /></td>
+					<td><c:out value="${user.userName}" /></td>
+					<td><c:out value="${user.userPass}" /></td>
+					<td><c:out value="${user.userAddress}" /></td>
+					<td><c:out value="${user.userContact}" /></td>
+					<td><c:out value="${user.userBalance}" /></td>
+					<td><c:out value="${user.userAcc}" /></td>
 				</tr>
 			</table>
+			<a href="/mainPage">Main Page</a>
 		</div>
-			
-			<%-- <form:button href="/deposit">Deposit Funds</form:button>
-			<form:button href="/withdraw">Withdraw Funds</form:button>
-			<form:button href="/fundTransfer">Transfer Funds</form:button>
-			<form:button href="/history">Transaction History</form:button> --%>
-		
 
 	</form:form>
 

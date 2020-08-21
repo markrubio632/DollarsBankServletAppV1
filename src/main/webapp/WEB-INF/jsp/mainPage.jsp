@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<div align="left">
+			<a href="/login">Login Out</a>
+		</div>
+	</header>
 	<form:form modelAttribute="user">
 		<div align="center">
 			<table border="1">
@@ -34,6 +39,6 @@
 				</tr>
 			</table>
 		</div>
-		</form:form>
+	</form:form>
 </body>
 </html>

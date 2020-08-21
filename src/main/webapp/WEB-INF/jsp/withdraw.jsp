@@ -13,24 +13,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<div align="left">
+			<a href="/login">Login Out</a>
+		</div>
+	</header>
 	<form:form method="post">
-		
+
 		<table border="1">
-  			<tr>
-    			<td>Amount:</td>
-   				<td>
-      				<input type = "number" name = "amount1" size = "30" step='0.01' value='0.00' placeholder='0.00' required>
-    			</td>
-  			</tr>
-  			<tr>
-    			<td>Current Balance:</td>
-   				<td>
-      				<td>${user.userBalance}</td>
-    			</td>
-  			</tr>
-	</table>
-	<p><input type = "submit" value = "submit"></p>
-		
+			<tr>
+				<td>Amount:</td>
+				<td><input type="number" name="amount1" size="30" step='0.01'
+					value='0.00' placeholder='0.00' required></td>
+			</tr>
+			<tr>
+				<td>Current Balance:</td>
+				<td>
+				<td>${user.userBalance}</td>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<input type="submit" value="submit">
+		</p>
+
 	</form:form>
 
 </body>

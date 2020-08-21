@@ -3,17 +3,13 @@ package com.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.model.Transaction;
 import com.model.User;
 import com.repository.CRUDRepo;
 import com.service.BankService;
@@ -35,6 +31,7 @@ public class BankController {
 	List<String> history = new ArrayList<>();
 
 	private double userBalance = 0;
+	private double recBalance = 0;
 
 	@GetMapping("/mainPage")
 	public String showMain() {
@@ -65,7 +62,7 @@ public class BankController {
 		user.setUserBalance(userBalance);
 
 		// update userbalance to the DB
-		daoimpl.updateUser(user);
+		daoimpl.updateBalance(user);
 
 		history.add(bank.addHistory("deposit", amount));
 		System.out.println("in deposit history: " + history.toString());
@@ -81,7 +78,6 @@ public class BankController {
 
 	}
 
-	// MUST FIND WAY TO CLEAR THE AMOUNT USED
 	@PostMapping("/withdraw")
 	public String WithdrawSuccess(ModelMap model, double amount1) {
 		// creates a user instance from the previous user
@@ -94,7 +90,7 @@ public class BankController {
 		user.setUserBalance(userBalance);
 
 		// update userbalance to the DB
-		daoimpl.updateUser(user);
+		daoimpl.updateBalance(user);
 
 		history.add(bank.addHistory("withdraw", amount1));
 		System.out.println("in withdraw history: " + history.toString());
@@ -106,17 +102,39 @@ public class BankController {
 		return "fundTransfer";
 	}
 	
-	//name param will be used for naming what user to give to (id used for identifying)
 	@PostMapping("/fundTransfer")
-	public String transferSuccess(ModelMap model, String name, int receiverId) {
+	public String transferSuccess(ModelMap model, int recId, double amount) {
 		
 		//this establishes the loggedin user by pulling from model
 		User loggedUser = (User) model.getAttribute("user");
 		
 		//this creates our receiver as an object so we can work with it
-		User receivingUser = daoimpl.findUserById(receiverId);
+		User receivingUser = daoimpl.findUserById(recId);
 		
+		//to be used for appending receiver histories
+		//List<String> recHistory = new ArrayList<>();
 		
+		//establishes and carries out user balance
+		userBalance = loggedUser.getUserBalance();
+		userBalance = bank.withdraw(userBalance, amount);
+		loggedUser.setUserBalance(userBalance);
+		//update the logged in user balance to the DB
+		daoimpl.updateBalance(loggedUser);
+		
+		//saves history for logged in user
+		history.add(bank.addHistory("withdraw", amount));
+		
+		//establishes and carries out receiving balance
+		recBalance = receivingUser.getUserBalance();
+		recBalance = bank.deposit(recBalance, amount);
+		receivingUser.setUserBalance(recBalance);
+		//update the receiving user balance to the DB
+		daoimpl.updateBalance(receivingUser);
+		
+		//IMPLEMENT HISTORY TO WORK WITH RECEIVER HISTORY
+		//figure out how to store history and apply it to receiver
+		//CONSIDER - making a DB for history and applying histories to that
+		//recHistory.add(bank.addTransHistory(amount));
 		
 		return "mainPage";
 	}

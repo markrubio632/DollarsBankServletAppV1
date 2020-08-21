@@ -5,23 +5,35 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fund transfer</title>
 </head>
 <body>
-	<form:form method="post" modelAttribute="user">
-		<div class="container" align="center">
-			<p2>Your current balance is ${user.userBalance}</p2>
-			<p2>Please select who you would like to send funds to</p2>
-			Receiver Name:
-			<form:input path="name" placeholder="Receiver Name" name="name" />
-			<br>
-
-			<p2>How much would you like to send?</p2>
-			> Amount:
-			<form:input path="amount" placeholder="Amount to Send" name="amount" />
+	<header>
+		<div align="left">
+			<a href="/login">Login Out</a>
 		</div>
+	</header>
+	<form:form method="post">
 
-		<form:button type="submit"></form:button>
+		<table border="1">
+			<tr>
+				<td>Who do you want to transfer to?</td>
+				<td><input type="text" name="recId" size="30"
+					placeholder='recId' required></td>
+			</tr>
+			<tr>
+				<td>Amount to Transfer:</td>
+				<td><input type="number" name="amount" size="30" step='0.01'
+					value='0.00' placeholder='0.00' required></td>
+			</tr>
+			<tr>
+				<td>Current Balance Available:</td>
+				<td>${user.userBalance}</td>
+			</tr>
+		</table>
+		<p>
+			<input type="submit" value="submit">
+		</p>
 
 	</form:form>
 

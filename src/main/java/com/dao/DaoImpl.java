@@ -26,8 +26,6 @@ public class DaoImpl implements Dao {
 	private static final String SAVE_USER = "insert into DOLLARSBANK (userName, userPass, userAddress, userContact, userBalance, userAcc) values (?,?,?,?,?,?)";
 
 	private static final String FIND_USER_BY_ID = "select * from DOLLARSBANK where id=?";
-
-	private static final String FIND_ALL_USERS = "select * from DOLLARSBANK";
 	
 	private static final String UPDATE_USER = "UPDATE dollarsbank SET userBalance = ? WHERE Id = ?";
 
@@ -61,22 +59,6 @@ public class DaoImpl implements Dao {
 		
 		List<User> uList = (List<User>) repo.findAll();
 		return uList;
-
-		/*try {
-			conn = getConnection();
-			stmt = conn.prepareStatement(FIND_ALL_USERS);
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				User user = new User(rs.getInt("id"), rs.getString("userName"), rs.getString("userPass"),
-						rs.getString("userAddress"), rs.getString("userContact"), rs.getDouble("userbalance"),
-						rs.getString("userAcc"));
-				uList.add(user);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return uList;*/
 	}
 
 	@Override
@@ -92,16 +74,11 @@ public class DaoImpl implements Dao {
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-
+				
 				user = new User(rs.getInt("id"), rs.getString("userName"), rs.getString("userPass"),
 						rs.getString("userAddress"), rs.getString("userContact"), rs.getDouble("userbalance"),
 						rs.getString("userAcc"));
 				uList.add(user);
-
-				/*
-				 * rs.getInt(1); rs.getString(2); rs.getString(3); rs.getString(4);
-				 * rs.getString(5); rs.getDouble(6); rs.getString(7);
-				 */
 			}
 
 		} catch (Exception e) {
@@ -125,16 +102,19 @@ public class DaoImpl implements Dao {
 		return conn;
 	}
 
+	//not implemented yet
 	@Override
 	public void deleteUser(User user) {
 		
 		repo.delete(user);
 	}
 	
-	public int updateUser(User user) {
+	//can be improved to update an entire user or bits and pieces
+	public int updateBalance(User user) {
 		
 		try {
 			conn = getConnection();
+			//refer to above final statement
 			stmt = conn.prepareStatement(UPDATE_USER);
 
 			stmt.setDouble(1, user.getUserBalance());

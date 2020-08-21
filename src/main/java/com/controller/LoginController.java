@@ -29,8 +29,6 @@ public class LoginController {
 
 	@Autowired
 	CRUDRepo repo;
-	
-	private int choice;
 
 	@GetMapping("/register")
 	public String showRegister(ModelMap model) {
@@ -80,24 +78,16 @@ public class LoginController {
 	@GetMapping("/myAccount")
 	public String findingUser(ModelMap model) {
 
-		System.out.println("in my account,the before model is: " + model);
-
 		List<User> uList = (List<User>) daoimpl.findAllUsers();
 
 		// this loops through all users and prints to the user
-		// the most recent user is the ending model that is shown. must fix/implement
-		// login function
 		for (User user : uList) {
 
 			model.put("user", user);
-			System.out.println("inside myacc loop, user is: " + user);
 
 		}
-		// -----------------
-
-		System.out.println("in my account,the after model is: " + model);
 
 		return "myAccount";
 	}
-	
+
 }
