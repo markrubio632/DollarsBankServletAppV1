@@ -10,34 +10,62 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Withdraw Funds</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+</style>
 </head>
 <body>
 	<header>
-		<div align="left">
-			<a href="/login">Login Out</a>
+		<div align="right">
+			<a href="/login" class="btn-basic" style="padding-right: 1%;">Log
+				Out</a>
 		</div>
 	</header>
 	<form:form method="post">
-
-		<table border="1">
-			<tr>
-				<td>Amount:</td>
-				<td><input type="number" name="amount1" size="30" step='0.01'
-					value='0.00' placeholder='0.00' required></td>
-			</tr>
-			<tr>
-				<td>Current Balance:</td>
-				<td>
-				<td>${user.userBalance}</td>
-				</td>
-			</tr>
-		</table>
-		<p>
-			<input type="submit" value="submit">
-		</p>
-
+		<div class="header" align="center" style="padding-top: 5%">
+			<h2>Please enter an amount to deposit</h2>
+		</div>
+		<div align="center" style="padding: 1%">
+			<table border="1" class="table"
+				style="text-align: center; width: 25%">
+				<tr>
+					<td>Withdraw Amount:</td>
+					<td><input type="number" name="amount1" size="30" step='0.01'
+						value='0.00' placeholder='0.00' required></td>
+				</tr>
+				<tr>
+					<td>Current Balance:</td>
+					<td><fmt:formatNumber value="${user.userBalance}"
+							type="currency" /></td>
+				</tr>
+			</table>
+			<a href="/mainPage" class="btn btn-lg btn-dark">Back</a> <input
+				type="submit" value="submit" class="btn btn-lg btn-primary">
+		</div>
 	</form:form>
+	<div class="footer">
+
+		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
+			proprietor for the wonderful opportunity DollarsBank has to serve our
+			community!</p>
+		<img src="Professional_Pic.jpg" style="width: 5%">
+	</div>
 
 </body>
 </html>

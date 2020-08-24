@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -12,13 +13,7 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>DOLLARSBANK Login Page</title>
-<style>
-.form-group {
-	margin: 2%;
-	text-align: center;
-}
-</style>
+<title>DOLLARSBANK ATM</title>
 <style>
 .footer {
 	position: fixed;
@@ -32,29 +27,22 @@
 </style>
 </head>
 <body>
-	<form:form method="post" modelAttribute="user">
-		<div class="header" align="center" style="padding-top: 5%">
-			<h1>Please Login to DollarsBank</h1>
+	<form:form modelAttribute="user">
+		<div class="header" align="center" style="padding-top: 2%">
+			<h1>Welcome to DollarsBank Banking!</h1>
 		</div>
 
-		<div class="container" align="right">
-			New User? Register <a href="/register">Here</a>
+		<div align="center" style="padding-top: 1%">
+			<img src="dollarsbank.jpg" style="width: 20%">
 		</div>
 
-		<div class="container" align="center">
-			User Name:
-			<form:input class="form-group" path="userName"
-				placeholder="User Name" name="userName" />
-			<br> Password:
-			<form:input class="form-group" path="userPass" placeholder="Password"
-				name="userPass" />
-			<br>
-			<form:button class="btn btn-lg btn-primary" type="submit">Log In</form:button>
-			<br>
-
-			<c:if test="${errorMessage != null}">${errorMessage}</c:if>
+		<div class="text-center" style="padding: 1%">
+			<a class="btn btn-primary btn-lg" href="/login">Login</a> <a
+				class="btn btn-primary btn-lg" href="/register">register</a>
 		</div>
+
 	</form:form>
+
 	<div class="footer">
 
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and

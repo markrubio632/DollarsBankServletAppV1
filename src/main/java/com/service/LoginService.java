@@ -14,8 +14,6 @@ public class LoginService {
 	@Autowired
 	DaoImpl daoimpl;
 	
-	int iterator = 0;
-	
 	public boolean loginVerify(String name, String pass) {
 
 		List<User> userList = daoimpl.findAllUsers();

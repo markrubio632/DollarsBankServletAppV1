@@ -30,6 +30,12 @@ public class LoginController {
 	@Autowired
 	CRUDRepo repo;
 
+	// MUST FIX ISSUE WITH REDIRECT TO LOGIN FROM INDEX
+	@GetMapping("/index")
+	public String showIndex(ModelMap model) {
+		return "/index";
+	}
+
 	@GetMapping("/register")
 	public String showRegister(ModelMap model) {
 		User user = new User();
@@ -53,6 +59,12 @@ public class LoginController {
 	@GetMapping("/login")
 	public String showLogin(ModelMap model) {
 
+		// this clears the boxes and places a temp user to user
+		// effectively "logs out" of the current user and would require loggin in again
+		// BUG - whenever login page is visited it automatically logs out of current
+		// user - FIX
+		User cleanTemp = new User();
+		model.put("user", cleanTemp);
 		return "login";
 	}
 
@@ -61,13 +73,16 @@ public class LoginController {
 
 		List<User> uList = (List<User>) daoimpl.findAllUsers();
 
+		// if the user input is wrong, displays this message
 		if (!login.loginVerify(userName, userPass)) {
-			model.put("errorMessage", "Invalid Credentials");
+			model.put("errorMessage", "Invalid Credentials. Please Try Again");
+			return "/login";
 		} else {
 
 			for (User user : uList) {
 				if (user.getUserName().equalsIgnoreCase(userName) && user.getUserPass().equalsIgnoreCase(userPass)) {
-					model.put("user", user);
+					// uses replace to replace the temp user with new user login
+					model.replace("user", user);
 				}
 			}
 		}

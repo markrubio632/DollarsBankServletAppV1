@@ -96,53 +96,51 @@ public class BankController {
 		System.out.println("in withdraw history: " + history.toString());
 		return "redirect:/mainPage";
 	}
-	
+
 	@GetMapping("/fundTransfer")
 	public String showTransfer(ModelMap model) {
 		return "fundTransfer";
 	}
-	
+
 	@PostMapping("/fundTransfer")
 	public String transferSuccess(ModelMap model, int recId, double amount) {
-		
-		//this establishes the loggedin user by pulling from model
+
+		// this establishes the loggedin user by pulling from model
 		User loggedUser = (User) model.getAttribute("user");
-		
-		//this creates our receiver as an object so we can work with it
+
+		// this creates our receiver as an object so we can work with it
 		User receivingUser = daoimpl.findUserById(recId);
-		
-		//to be used for appending receiver histories
-		//List<String> recHistory = new ArrayList<>();
-		
-		//establishes and carries out user balance
+
+		// to be used for appending receiver histories
+		// List<String> recHistory = new ArrayList<>();
+
+		// establishes and carries out user balance
 		userBalance = loggedUser.getUserBalance();
 		userBalance = bank.withdraw(userBalance, amount);
 		loggedUser.setUserBalance(userBalance);
-		//update the logged in user balance to the DB
+		// update the logged in user balance to the DB
 		daoimpl.updateBalance(loggedUser);
-		
-		//saves history for logged in user
+
+		// saves history for logged in user
 		history.add(bank.addHistory("withdraw", amount));
-		
-		//establishes and carries out receiving balance
+
+		// establishes and carries out receiving balance
 		recBalance = receivingUser.getUserBalance();
 		recBalance = bank.deposit(recBalance, amount);
 		receivingUser.setUserBalance(recBalance);
-		//update the receiving user balance to the DB
+		// update the receiving user balance to the DB
 		daoimpl.updateBalance(receivingUser);
-		
-		//IMPLEMENT HISTORY TO WORK WITH RECEIVER HISTORY
-		//figure out how to store history and apply it to receiver
-		//CONSIDER - making a DB for history and applying histories to that
-		//recHistory.add(bank.addTransHistory(amount));
-		
+
+		// IMPLEMENT HISTORY TO WORK WITH RECEIVER HISTORY
+		// figure out how to store history and apply it to receiver
+		// CONSIDER - making a DB for history and applying histories to that
+		// recHistory.add(bank.addTransHistory(amount));
+
 		return "mainPage";
 	}
 
 	@GetMapping("/history")
 	public String showHistory(ModelMap model) {
-
-		System.out.println("master history list: " + history.toString());
 
 		// appends the entire history (which has several items over-time)
 		// to the model for JSP access

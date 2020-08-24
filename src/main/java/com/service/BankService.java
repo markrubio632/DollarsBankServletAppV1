@@ -1,8 +1,7 @@
 package com.service;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +39,8 @@ public class BankService {
 	//work on implementing this with fund transfer verbage
 	// (text, numbers)
 	public String addHistory(String text, double numbers) {
-
-		Timestamp timestamp = new Timestamp(DateFormat.FULL);
+		
+		Date timestamp = new java.util.Date();
 
 		return "You had a recent " + text + " of " + numbers + " at " + sdf.format(timestamp);
 	}
