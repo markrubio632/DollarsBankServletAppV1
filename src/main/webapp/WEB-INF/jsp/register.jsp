@@ -14,16 +14,11 @@
 
 <style>
 .form-group {
-	margin: 2%;
+	margin: 1%;
 	text-align: center;
 }
-
-,
-.center {
-	width: 10%;
-}
-
-,
+</style>
+<style>
 .footer {
 	position: fixed;
 	left: 0;
@@ -41,7 +36,8 @@
 
 	<header>
 		<div align="right">
-			Already a user? <a href="/login" class="btn-basic" style="padding-right: 1%;">Login</a>
+			Already a user? <a href="/login" class="btn-basic"
+				style="padding-right: 1%;">Login</a>
 		</div>
 	</header>
 	<form:form method="post" modelAttribute="user">
@@ -81,7 +77,7 @@
 			<form:input path="userAcc" placeholder="Account Name" name="userAcc" />
 
 		</div>
-		<div class="center" align="center">
+		<div align="center">
 			<form:button type="submit" class="btn btn-lg btn-primary">Register</form:button>
 		</div>
 
@@ -92,7 +88,8 @@
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
 			proprietor for the wonderful opportunity DollarsBank has to serve our
 			community!</p>
-		<a href="https://github.com/markrubio632"><img src="Professional_Pic.jpg" style="width: 5%"></a>
+		<a href="https://github.com/markrubio632" target="_blank"><img
+			src="Professional_Pic.jpg" style="width: 5%"></a>
 	</div>
 
 </body>

@@ -36,7 +36,6 @@ public class BankService {
 		return balance;
 	}
 
-	//work on implementing this with fund transfer verbage
 	// (text, numbers)
 	public String addHistory(String text, double numbers) {
 		

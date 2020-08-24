@@ -93,15 +93,6 @@ public class LoginController {
 	@GetMapping("/myAccount")
 	public String findingUser(ModelMap model) {
 
-		List<User> uList = (List<User>) daoimpl.findAllUsers();
-
-		// this loops through all users and prints to the user
-		for (User user : uList) {
-
-			model.put("user", user);
-
-		}
-
 		return "myAccount";
 	}
 

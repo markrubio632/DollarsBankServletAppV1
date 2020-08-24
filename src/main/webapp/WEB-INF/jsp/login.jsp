@@ -12,7 +12,7 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>DOLLARSBANK Login Page</title>
+<title>DollarsBank Login</title>
 <style>
 .form-group {
 	margin: 2%;
@@ -51,8 +51,11 @@
 			<br>
 			<form:button class="btn btn-lg btn-primary" type="submit">Log In</form:button>
 			<br>
+			<c:if test="${errorMessage != null}">
+				<div class="alert alert-danger" style="width: 40%">${errorMessage}</div>
+			</c:if>
 
-			<c:if test="${errorMessage != null}">${errorMessage}</c:if>
+
 		</div>
 	</form:form>
 	<div class="footer">
@@ -60,7 +63,7 @@
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
 			proprietor for the wonderful opportunity DollarsBank has to serve our
 			community!</p>
-		<a href="https://github.com/markrubio632"><img
+		<a href="https://github.com/markrubio632" target="_blank"><img
 			src="Professional_Pic.jpg" style="width: 5%"></a>
 	</div>
 

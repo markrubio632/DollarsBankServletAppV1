@@ -102,7 +102,7 @@ public class DaoImpl implements Dao {
 		return conn;
 	}
 
-	//not implemented yet
+	//not implemented yet in controller
 	@Override
 	public void deleteUser(User user) {
 		

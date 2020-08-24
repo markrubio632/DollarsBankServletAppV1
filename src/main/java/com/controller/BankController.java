@@ -65,7 +65,6 @@ public class BankController {
 		daoimpl.updateBalance(user);
 
 		history.add(bank.addHistory("deposit", amount));
-		System.out.println("in deposit history: " + history.toString());
 		return "redirect:/mainPage";
 	}
 
@@ -93,7 +92,6 @@ public class BankController {
 		daoimpl.updateBalance(user);
 
 		history.add(bank.addHistory("withdraw", amount1));
-		System.out.println("in withdraw history: " + history.toString());
 		return "redirect:/mainPage";
 	}
 

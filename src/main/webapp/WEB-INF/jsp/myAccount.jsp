@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DOLLARSBANK My Account</title>
+<title>${user.userName}'s DollarsBank Account</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -69,7 +69,8 @@
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
 			proprietor for the wonderful opportunity DollarsBank has to serve our
 			community!</p>
-		<img src="Professional_Pic.jpg" style="width: 5%">
+		<a href="https://github.com/markrubio632" target="_blank"><img
+			src="Professional_Pic.jpg" style="width: 5%"></a>
 	</div>
 
 </body>

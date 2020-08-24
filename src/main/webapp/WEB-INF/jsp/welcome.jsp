@@ -40,7 +40,8 @@
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
 			proprietor for the wonderful opportunity DollarsBank has to serve our
 			community!</p>
-		<img src="Professional_Pic.jpg" style="width: 5%">
+		<a href="https://github.com/markrubio632" target="_blank"><img
+			src="Professional_Pic.jpg" style="width: 5%"></a>
 	</div>
 
 </body>

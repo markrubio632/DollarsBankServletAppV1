@@ -27,7 +27,8 @@
 <body>
 	<header>
 		<div align="right">
-			<a href="/login" class="btn-basic" style="padding-right: 1%;">Log Out</a>
+			<a href="/login" class="btn-basic" style="padding-right: 1%;">Log
+				Out</a>
 		</div>
 	</header>
 	<form:form modelAttribute="user">
@@ -67,7 +68,8 @@
 		<p>Thank you for using DOLLARSBANK Inc. Please thank our owner and
 			proprietor for the wonderful opportunity DollarsBank has to serve our
 			community!</p>
-		<img src="Professional_Pic.jpg" style="width: 5%">
+		<a href="https://github.com/markrubio632" target="_blank"><img
+			src="Professional_Pic.jpg" style="width: 5%"></a>
 	</div>
 </body>
 </html>
