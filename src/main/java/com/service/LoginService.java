@@ -13,7 +13,7 @@ public class LoginService {
 
 	@Autowired
 	DaoImpl daoimpl;
-	
+
 	public boolean loginVerify(String name, String pass) {
 
 		List<User> userList = daoimpl.findAllUsers();
@@ -26,6 +26,18 @@ public class LoginService {
 
 		}
 		return false;
+	}
+
+	public boolean phoneValidation(String phoneNum) {
+
+		//checks to see if there is a string of 10 concurrent numbers
+		if (phoneNum.matches("\\d{10}")) {
+
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }

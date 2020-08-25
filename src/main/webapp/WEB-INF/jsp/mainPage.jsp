@@ -38,7 +38,7 @@
 		</div>
 		<div align="center">
 			<table border="1" class="table"
-				style="text-align: center; width: 25%">
+				style="text-align: center; width: 30%">
 				<thead>
 					<tr>
 						<th>Options</th>

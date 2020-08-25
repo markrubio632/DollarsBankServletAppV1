@@ -50,10 +50,22 @@ public class LoginController {
 			@RequestParam String userAddress, @RequestParam String userContact, @RequestParam double userBalance,
 
 			@RequestParam String userAcc) {
-
-		repo.save(new User(0, userName, userPass, userAddress, userContact, userBalance, userAcc));
+		
+		/*
+		 * repo.save(new User(0, userName, userPass, userAddress, userContact,
+		 * userBalance, userAcc)); return "/login";
+		 */
+		if(login.phoneValidation(userContact)) {
+			repo.save(new User(0, userName, userPass, userAddress, userContact, userBalance, userAcc));
 
 		return "redirect:/login";
+		}
+		else {
+			model.put("errorMessage", "There was an error in the input. Please ensure input is properly formatted.");
+			return "/register";
+		}
+
+		
 	}
 
 	@GetMapping("/login")

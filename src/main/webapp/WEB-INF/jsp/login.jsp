@@ -41,22 +41,26 @@
 			New User? Register <a href="/register">Here</a>
 		</div>
 
-		<div class="container" align="center">
-			User Name:
-			<form:input class="form-group" path="userName"
-				placeholder="User Name" name="userName" />
-			<br> Password:
-			<form:input class="form-group" path="userPass" placeholder="Password"
-				name="userPass" />
-			<br>
+		<!-- USERNAME -->
+		<div class="form-group" align="center">
+			<label for="name-text">User Name:</label>
+			<form:input path="userName" id="name-text" placeholder="User Name"
+				name="userName" required="true" />
+		</div>
+		<!-- USERNAME -->
+		<div class="form-group" align="center">
+			<label for="pass-text">Password:</label>
+			<form:password path="userPass" placeholder="Password" name="userPass"
+				required="true" id="pass-text" />
+		</div>
+		<!-- LOGIN BUTTON -->
+		<div class="form-group" align="center">
 			<form:button class="btn btn-lg btn-primary" type="submit">Log In</form:button>
-			<br>
 			<c:if test="${errorMessage != null}">
 				<div class="alert alert-danger" style="width: 40%">${errorMessage}</div>
 			</c:if>
-
-
 		</div>
+
 	</form:form>
 	<div class="footer">
 
